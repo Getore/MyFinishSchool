@@ -1,6 +1,6 @@
 # Design and Implementation of Data Preprocessing System TCM clinical treatment terminology treatment part
 
-## 平台简介
+## 简介
 
 BootDo是高效率，低封装，面向学习型，面向微服的**开源**Java EE开发框架。
 
