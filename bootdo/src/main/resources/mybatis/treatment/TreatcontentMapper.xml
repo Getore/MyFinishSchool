@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.treatment.dao.TreatcontentDao">
+
+	<select id="get" resultType="com.bootdo.treatment.domain.TreatcontentDO">
+		select `id`,`parent_id`,`content`,`order_num`,`create_time`,`create_user`,`remark` from treatcontent where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.treatment.domain.TreatcontentDO">
+		select `id`,`parent_id`,`content`,`order_num`,`create_time`,`create_user`,`remark` from treatcontent
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+		  		  <if test="content != null and content != ''"> and content = #{content} </if>
+		  		  <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from treatcontent
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+		  		  <if test="content != null and content != ''"> and content = #{content} </if>
+		  		  <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.treatment.domain.TreatcontentDO" useGeneratedKeys="true" keyProperty="id">
+		insert into treatcontent
+		(
+			`parent_id`, 
+			`content`, 
+			`order_num`, 
+			`create_time`, 
+			`create_user`, 
+			`remark`
+		)
+		values
+		(
+			#{parentId}, 
+			#{content}, 
+			#{orderNum}, 
+			#{createTime}, 
+			#{createUser}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.treatment.domain.TreatcontentDO">
+		update treatcontent 
+		<set>
+			<if test="parentId != null">`parent_id` = #{parentId}, </if>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="orderNum != null">`order_num` = #{orderNum}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createUser != null">`create_user` = #{createUser}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from treatcontent where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from treatcontent where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
