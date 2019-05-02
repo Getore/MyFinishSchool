@@ -47,29 +47,29 @@ function load() {
 								{
 									checkbox : true
 								},
-																{
-									field : 'id', 
-									title : 'id - 治法部分的注释部分' 
-								},
+								// 								{
+								// 	field : 'id',
+								// 	title : 'id - 治法部分的注释部分'
+								// },
 																{
 									field : 'parentId', 
-									title : 'rule_of_treatment表中的name_unit' 
+									title : '父亲节点编码'
 								},
 																{
 									field : 'content', 
-									title : '注释内容' 
+									title : '注释'
 								},
-																{
-									field : 'orderNum', 
-									title : '排序值，用于内部排序' 
-								},
+								// 								{
+								// 	field : 'orderNum',
+								// 	title : '排序值，用于内部排序'
+								// },
 																{
 									field : 'createTime', 
 									title : '创建时间' 
 								},
 																{
 									field : 'createUser', 
-									title : '创建人编号' 
+									title : '创建人'
 								},
 																{
 									field : 'remark', 

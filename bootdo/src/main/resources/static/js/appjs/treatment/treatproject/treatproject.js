@@ -47,13 +47,13 @@ function load() {
 								{
 									checkbox : true
 								},
-																{
-									field : 'id', 
-									title : 'id - 治则(专属)表ID' 
-								},
+								// 								{
+								// 	field : 'id',
+								// 	title : 'id - 治则(专属)表ID'
+								// },
 																{
 									field : 'parentId', 
-									title : '治则，此处默认为0'
+									title : '父亲节点编码'
 								},
 																{
 									field : 'title', 
@@ -61,19 +61,19 @@ function load() {
 								},
 																{
 									field : 'titleUnit', 
-									title : '名称 代码' 
+									title : '名称代码'
 								},
-																{
-									field : 'orderNum', 
-									title : '排序值，用于内部排序' 
-								},
+								// 								{
+								// 	field : 'orderNum',
+								// 	title : '排序值，用于内部排序'
+								// },
 																{
 									field : 'createTime', 
 									title : '创建时间' 
 								},
 																{
 									field : 'createUser', 
-									title : '创建人编号' 
+									title : '创建人'
 								},
 																{
 									field : 'remark', 

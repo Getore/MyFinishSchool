@@ -11,19 +11,19 @@
 						<form class="form-horizontal m-t" id="signupForm">
 						<input id="id" name="id" th:value="${treatcontent.id}"  type="hidden">
 							<div class="form-group">	
-								<label class="col-sm-3 control-label">rule_of_treatment表中的name_unit：</label>
+								<label class="col-sm-3 control-label">父亲节点（没有则为 0）：</label>
 								<div class="col-sm-8">
 									<input id="parentId" name="parentId" th:value="${treatcontent.parentId}" class="form-control" type="text">
 								</div>
 							</div>
 														<div class="form-group">	
-								<label class="col-sm-3 control-label">注释内容：</label>
+								<label class="col-sm-3 control-label">注释：</label>
 								<div class="col-sm-8">
 									<input id="content" name="content" th:value="${treatcontent.content}" class="form-control" type="text">
 								</div>
 							</div>
 														<div class="form-group">	
-								<label class="col-sm-3 control-label">排序值，用于内部排序：</label>
+								<label class="col-sm-3 control-label">排序值：</label>
 								<div class="col-sm-8">
 									<input id="orderNum" name="orderNum" th:value="${treatcontent.orderNum}" class="form-control" type="text">
 								</div>
@@ -35,7 +35,7 @@
 								</div>
 							</div>
 														<div class="form-group">	
-								<label class="col-sm-3 control-label">创建人编号：</label>
+								<label class="col-sm-3 control-label">创建人（请填写编号）：</label>
 								<div class="col-sm-8">
 									<input id="createUser" name="createUser" th:value="${treatcontent.createUser}" class="form-control" type="text">
 								</div>
