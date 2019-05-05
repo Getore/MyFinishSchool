@@ -1,8 +1,13 @@
 package com.bootdo.therapy.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.bootdo.common.config.Constant;
+import com.bootdo.common.domain.Tree;
+import com.bootdo.system.domain.DeptDO;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -32,6 +37,8 @@ import com.bootdo.common.utils.R;
 @Controller
 @RequestMapping("/therapy/theraproject")
 public class TheraprojectController {
+	private String prefix = "therapy/theraproject";		// treeTable
+
 	@Autowired
 	private TheraprojectService theraprojectService;
 	
@@ -40,22 +47,29 @@ public class TheraprojectController {
 	String Theraproject(){
 	    return "therapy/theraproject/theraproject";
 	}
-	
+
+	@ApiOperation(value="获取治则名称列表", notes="")	// treeTable
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("therapy:theraproject:theraproject")
-	public PageUtils list(@RequestParam Map<String, Object> params){
-		//查询列表数据
-        Query query = new Query(params);
-		List<TheraprojectDO> theraprojectList = theraprojectService.list(query);
-		int total = theraprojectService.count(query);
-		PageUtils pageUtils = new PageUtils(theraprojectList, total);
-		return pageUtils;
+	public List<TheraprojectDO> list(){
+		Map<String, Object> query = new HashMap<>(16);
+		List<TheraprojectDO> theraprojectDOS = theraprojectService.list(query);
+		return theraprojectDOS;
 	}
 	
-	@GetMapping("/add")
+	@GetMapping("/add/{pId}")
 	@RequiresPermissions("therapy:theraproject:add")
-	String add(){
+	String add(@PathVariable("pId") String pId, Model model){
+		model.addAttribute("pId", pId);
+
+		// 获取上级治法名称，只读显示模式
+		if (pId == "0") {
+			model.addAttribute("pName", "一级治法");
+		} else {
+			model.addAttribute("pName", theraprojectService.getPId(pId).getNametp());
+		}
+
 	    return "therapy/theraproject/add";
 	}
 
@@ -64,6 +78,12 @@ public class TheraprojectController {
 	String edit(@PathVariable("id") Integer id,Model model){
 		TheraprojectDO theraproject = theraprojectService.get(id);
 		model.addAttribute("theraproject", theraproject);
+		if(Constant.THERAPY_ROOT_ID.equals(theraproject.getParentId())) {
+			model.addAttribute("theraproject.nametp", "0");	//TODO 可能是nametp
+		}else {
+			TheraprojectDO parTheraproject = theraprojectService.getPId(theraproject.getParentId());
+			model.addAttribute("theraproject.nametp", parTheraproject.getNametp());		//TODO 可能是nametp
+		}
 	    return "therapy/theraproject/edit";
 	}
 	
@@ -113,5 +133,18 @@ public class TheraprojectController {
 		theraprojectService.batchRemove(ids);
 		return R.ok();
 	}
-	
+
+	@GetMapping("/tree")
+	@ResponseBody
+	public Tree<TheraprojectDO> tree() {
+		Tree<TheraprojectDO> tree = new Tree<TheraprojectDO>();
+		tree = theraprojectService.getTree();
+		return tree;
+	}
+
+	@GetMapping("/treeView")
+	String treeView() {
+		return  prefix + "/theraprojectTree";
+	}
+
 }

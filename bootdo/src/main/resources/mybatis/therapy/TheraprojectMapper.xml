@@ -94,4 +94,14 @@
 		</foreach>
 	</delete>
 
+	<!--treeTable-->
+	<select id="listParentTherapy" resultType="String">
+		select DISTINCT parent_id from theraproject
+	</select>
+
+	<select id="getSmallTherapyNumber" resultType="int">
+		select count(*) from theraproject
+		WHERE nametp_unit = #{value}
+	</select>
+
 </mapper>

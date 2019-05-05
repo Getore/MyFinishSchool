@@ -17,6 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface TheraprojectDao {
 
 	TheraprojectDO get(Integer id);
+
+	TheraprojectDO getPId(String pId);	// treeTable
 	
 	List<TheraprojectDO> list(Map<String, Object> map);
 	
@@ -29,4 +31,8 @@ public interface TheraprojectDao {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+	String[] listParentTherapy();	// 列出治法的父节点
+
+	int getSmallTherapyNumber(String nametpUnit);	// 计算治法的子节点的个数
 }

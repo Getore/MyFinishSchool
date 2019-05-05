@@ -34,6 +34,7 @@
 	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
 		<div>
 			<script type="text/javascript">
+                var s_add_h = 'hidden';
 				var s_edit_h = 'hidden';
 				var s_remove_h = 'hidden';
 				var s_resetPwd_h = 'hidden';
@@ -42,6 +43,11 @@
 		<div shiro:hasPermission="therapy:theraproject:edit">
 			<script type="text/javascript">
 				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="therapy:theraproject:add">
+			<script type="text/javascript">
+    	        s_add_h = '';
 			</script>
 		</div>
 		<div shiro:hasPermission="therapy:theraproject:remove">
