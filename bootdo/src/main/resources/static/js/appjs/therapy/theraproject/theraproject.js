@@ -16,7 +16,7 @@ function load() {
 						url : prefix + "/list", // 服务器数据的加载地址
 
                         ajaxParams : {}, // 请求数据的ajax的data属性
-                        expandColumn : '1', // 在哪一列上面显示展开按钮
+                        expandColumn : '0', // 在哪一列上面显示展开按钮
                         striped : true, // 是否各行渐变色
                         bordered : true, // 是否显示边框
                         expandAll : false, // 是否全部展开
@@ -62,35 +62,35 @@ function load() {
 								// 	field : 'id',
 								// 	title : 'id'
 								// },
-																{
-									field : 'parentId', 
-									title : '父亲节点编码'
-								},
-																{
+								{
 									field : 'nametp', 
 									title : '名称' 
 								},
-																{
+                            	{
+                                	field : 'parentId',
+                                	title : '父亲节点编码'
+                            	},
+								{
 									field : 'nametpUnit', 
 									title : '名称代码'
 								},
-																{
+								{
 									field : 'orderNum', 
 									title : '排序值' 
 								},
-																{
+								{
 									field : 'createTime', 
 									title : '创建时间' 
 								},
-																{
+								{
 									field : 'createUser', 
 									title : '创建人编号' 
 								},
-																{
+								{
 									field : 'remark', 
 									title : '备注' 
 								},
-																{
+								{
 									title : '操作',
 									field : 'id',
 									align : 'center',
