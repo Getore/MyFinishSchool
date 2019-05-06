@@ -14,9 +14,11 @@ function load() {
                         parentCode : 'parentId',
 
                         method : 'get', // 服务器数据的请求方式 get or post
-                        url : prefix + "/list", // 服务器数据的加载地址
+                        url : prefix + '/list?'+"title="+ $('#title').val(), // 服务器数据的加载地址
 
-                        ajaxParams : {}, // 请求数据的ajax的data属性
+                        ajaxParams : {
+                            // title : $('#title').val()
+						}, // 请求数据的ajax的data属性
                         expandColumn : '0', // 在哪一列上面显示展开按钮
                         striped : true, // 是否各行渐变色
                         bordered : true, // 是否显示边框
@@ -45,9 +47,10 @@ function load() {
 					// 	queryParams : function(params) {
 					// 		return {
 					// 			//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
-					// 			limit: params.limit,
-					// 			offset:params.offset
+					// 			// limit: params.limit,
+					// 			// offset:params.offset
 					//            // name:$('#searchName').val(),
+                    //             title : $('#title').val()
 					//            // username:$('#searchName').val()
 					// 		};
 					// 	},
@@ -116,7 +119,7 @@ function load() {
 					});
 }
 function reLoad() {
-	$('#exampleTable').bootstrapTreeTable('refresh');
+    load();
 }
 function add(parentId) {
 	layer.open({

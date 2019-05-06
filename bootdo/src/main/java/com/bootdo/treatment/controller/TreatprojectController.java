@@ -52,10 +52,19 @@ public class TreatprojectController {
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("treatment:treatproject:treatproject")
-	public List<TreatprojectDO> list(){
+	public List<TreatprojectDO> list(@RequestParam(value = "title") String title){
 		//查询列表数据
-		Map<String, Object> query = new HashMap<String, Object>();
-		List<TreatprojectDO> treatprojectList = treatprojectService.list(query);
+		Map<String, Object> query = new HashMap<String, Object>(16);
+
+		List<TreatprojectDO> treatprojectList;
+		if (title != null && title != ""){
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("title", title);
+
+			treatprojectList = treatprojectService.list(map);
+		} else {
+			treatprojectList = treatprojectService.list(query);
+		}
 
 		return treatprojectList;
 	}
