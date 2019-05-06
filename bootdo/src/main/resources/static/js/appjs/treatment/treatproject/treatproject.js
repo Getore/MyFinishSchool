@@ -105,7 +105,7 @@ function load() {
 												+ row.id
 												+ '\')"><i class="fa fa-edit"></i></a> ';
                                         var a = '<a class="btn btn-primary btn-sm ' + s_add_h + '" href="#" title="增加下級"  mce_href="#" onclick="add(\''
-                                            + row.parentId
+                                            + row.id
                                             + '\')"><i class="fa fa-plus"></i></a> ';
 										var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
 												+ row.id
@@ -121,14 +121,14 @@ function load() {
 function reLoad() {
     load();
 }
-function add(parentId) {
+function add(id) {
 	layer.open({
 		type : 2,
 		title : '增加',
 		maxmin : true,
 		shadeClose : false, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/add/' + parentId // iframe的url
+		content : prefix + '/add/' + id // iframe的url
 	});
 }
 function edit(id) {
