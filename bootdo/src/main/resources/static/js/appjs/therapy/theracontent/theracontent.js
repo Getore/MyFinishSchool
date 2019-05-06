@@ -44,46 +44,46 @@ function load() {
 						// sortOrder.
 						// 返回false将会终止请求
 						columns : [
+								// {
+								// 	checkbox : true
+								// },
+								// 								{
+								// 	field : 'id',
+								// 	title : 'id'
+								// },
 								{
-									checkbox : true
-								},
-																{
-									field : 'id', 
-									title : 'id'
-								},
-																{
 									field : 'parentId', 
 									title : '父亲节点编码'
 								},
-																{
+								{
 									field : 'applicableSymptom', 
 									title : '适用症候'
 								},
-																{
+								{
 									field : 'specificTreatment', 
 									title : '治疗方法'
 								},
-																{
+								{
 									field : 'synonymWord', 
 									title : '同义词' 
 								},
-																{
+								{
 									field : 'orderNum', 
 									title : '排序值'
 								},
-																{
+								{
 									field : 'createTime', 
 									title : '创建时间' 
 								},
-																{
+								{
 									field : 'createUser', 
 									title : '创建人' 
 								},
-																{
+								{
 									field : 'remark', 
 									title : '备注' 
 								},
-																{
+								{
 									title : '操作',
 									field : 'id',
 									align : 'center',
