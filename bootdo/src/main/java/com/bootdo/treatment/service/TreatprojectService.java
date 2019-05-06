@@ -1,5 +1,7 @@
 package com.bootdo.treatment.service;
 
+import com.bootdo.common.domain.Tree;
+import com.bootdo.therapy.domain.TheraprojectDO;
 import com.bootdo.treatment.domain.TreatprojectDO;
 
 import java.util.List;
@@ -15,6 +17,8 @@ import java.util.Map;
 public interface TreatprojectService {
 	
 	TreatprojectDO get(Integer id);
+
+	TreatprojectDO getPId(String parentId);		// treeTable - add（controller）
 	
 	List<TreatprojectDO> list(Map<String, Object> map);
 	
@@ -27,4 +31,10 @@ public interface TreatprojectService {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+	Tree<TreatprojectDO> getTree();	// treeTable
+
+	boolean checkTreatmentHasName(String titleUnit);
+
+	List<String> listChildrenIds(String parentId);
 }

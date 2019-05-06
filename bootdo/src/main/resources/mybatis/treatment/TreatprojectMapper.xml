@@ -7,6 +7,13 @@
 		select `id`,`parent_id`,`title`,`title_unit`,`order_num`,`create_time`,`create_user`,`remark` from treatproject where id = #{value}
 	</select>
 
+	<select id="getPId" resultType="com.bootdo.treatment.domain.TreatprojectDO">
+		select `id`,`parent_id`,`title`,`title_unit`,`order_num`,`create_time`,`create_user`,`remark` from treatproject
+		<where>
+			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+		</where>
+	</select>
+
 	<select id="list" resultType="com.bootdo.treatment.domain.TreatprojectDO">
 		select `id`,`parent_id`,`title`,`title_unit`,`order_num`,`create_time`,`create_user`,`remark` from treatproject
         <where>  
@@ -93,5 +100,15 @@
 			#{id}
 		</foreach>
 	</delete>
+
+	<!--treeTable-->
+	<select id="listParentTreatment" resultType="String">
+		select DISTINCT parent_id from treatproject
+	</select>
+
+	<select id="getSmallTreatmentNumber" resultType="int">
+		select count(*) from treatproject
+		WHERE title_unit = #{value}
+	</select>
 
 </mapper>

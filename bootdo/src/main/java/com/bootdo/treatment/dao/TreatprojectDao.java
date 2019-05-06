@@ -1,5 +1,6 @@
 package com.bootdo.treatment.dao;
 
+import com.bootdo.therapy.domain.TheraprojectDO;
 import com.bootdo.treatment.domain.TreatprojectDO;
 
 import java.util.List;
@@ -17,6 +18,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface TreatprojectDao {
 
 	TreatprojectDO get(Integer id);
+
+	TreatprojectDO getPId(String pId);	// treeTable
 	
 	List<TreatprojectDO> list(Map<String, Object> map);
 	
@@ -29,4 +32,9 @@ public interface TreatprojectDao {
 	int remove(Integer id);
 	
 	int batchRemove(Integer[] ids);
+
+	String[] listParentTreatment();	// 列出治法的父节点
+
+	int getSmallTreatmentNumber(String titleUnit);	// 计算治法的子节点的个数
+
 }

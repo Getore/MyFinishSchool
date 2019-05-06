@@ -1,8 +1,12 @@
 package com.bootdo.treatment.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.bootdo.common.domain.Tree;
+import com.bootdo.therapy.domain.TheraprojectDO;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -32,6 +36,9 @@ import com.bootdo.common.utils.R;
 @Controller
 @RequestMapping("/treatment/treatproject")
 public class TreatprojectController {
+
+	private String prefix = "/treatment/treatproject";
+
 	@Autowired
 	private TreatprojectService treatprojectService;
 	
@@ -40,17 +47,17 @@ public class TreatprojectController {
 	String Treatproject(){
 	    return "treatment/treatproject/treatproject";
 	}
-	
+
+	@ApiOperation(value="获取治则名称列表", notes="")	// treeTable
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("treatment:treatproject:treatproject")
-	public PageUtils list(@RequestParam Map<String, Object> params){
+	public List<TreatprojectDO> list(){
 		//查询列表数据
-        Query query = new Query(params);
+		Map<String, Object> query = new HashMap<String, Object>();
 		List<TreatprojectDO> treatprojectList = treatprojectService.list(query);
-		int total = treatprojectService.count(query);
-		PageUtils pageUtils = new PageUtils(treatprojectList, total);
-		return pageUtils;
+
+		return treatprojectList;
 	}
 	
 	@GetMapping("/add")
@@ -112,6 +119,19 @@ public class TreatprojectController {
 	public R remove(@RequestParam("ids[]") Integer[] ids){
 		treatprojectService.batchRemove(ids);
 		return R.ok();
+	}
+
+	@GetMapping("/tree")
+	@ResponseBody
+	public Tree<TreatprojectDO> tree() {
+		Tree<TreatprojectDO> tree = new Tree<TreatprojectDO>();
+		tree = treatprojectService.getTree();
+		return tree;
+	}
+
+	@GetMapping("/treeView")
+	String treeView() {
+		return  prefix + "/treatprojectTree";
 	}
 	
 }
