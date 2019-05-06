@@ -28,8 +28,8 @@ public class TheraprojectServiceImpl implements TheraprojectService {
 	}
 
 	@Override
-	public TheraprojectDO getPId(String pId) {
-		return theraprojectDao.getPId(pId);
+	public TheraprojectDO getPId(String parentId) {
+		return theraprojectDao.getPId(parentId);
 	}
 
 	@Override

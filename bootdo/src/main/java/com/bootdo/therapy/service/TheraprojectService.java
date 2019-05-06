@@ -17,7 +17,7 @@ public interface TheraprojectService {
 	
 	TheraprojectDO get(Integer id);
 
-	TheraprojectDO getPId(String pId);		// treeTable - add（controller）
+	TheraprojectDO getPId(String parentId);		// treeTable - add（controller）
 	
 	List<TheraprojectDO> list(Map<String, Object> map);
 	

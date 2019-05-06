@@ -58,16 +58,16 @@ public class TheraprojectController {
 		return theraprojectDOS;
 	}
 	
-	@GetMapping("/add/{pId}")
+	@GetMapping("/add/{parentId}")
 	@RequiresPermissions("therapy:theraproject:add")
-	String add(@PathVariable("pId") String pId, Model model){
-		model.addAttribute("pId", pId);
+	String add(@PathVariable("parentId") String parentId, Model model){
+		model.addAttribute("parentId", parentId);
 
 		// 获取上级治法名称，只读显示模式
-		if (pId == "0") {
+		if (parentId == "undefined" || parentId == "0") {
 			model.addAttribute("pName", "一级治法");
 		} else {
-			model.addAttribute("pName", theraprojectService.getPId(pId).getNametp());
+			model.addAttribute("pName", theraprojectService.getPId(parentId).getNametp());
 		}
 
 	    return "therapy/theraproject/add";
@@ -79,10 +79,10 @@ public class TheraprojectController {
 		TheraprojectDO theraproject = theraprojectService.get(id);
 		model.addAttribute("theraproject", theraproject);
 		if(Constant.THERAPY_ROOT_ID.equals(theraproject.getParentId())) {
-			model.addAttribute("theraproject.nametp", "0");	//TODO 可能是nametp
+			model.addAttribute("nametp", "0");	//TODO 可能是nametp
 		}else {
 			TheraprojectDO parTheraproject = theraprojectService.getPId(theraproject.getParentId());
-			model.addAttribute("theraproject.nametp", parTheraproject.getNametp());		//TODO 可能是nametp
+			model.addAttribute("nametp", parTheraproject.getNametp());		//TODO 可能是nametp
 		}
 	    return "therapy/theraproject/edit";
 	}

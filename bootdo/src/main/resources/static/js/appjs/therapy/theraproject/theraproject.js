@@ -99,7 +99,7 @@ function load() {
 												+ row.id
 												+ '\')"><i class="fa fa-edit"></i></a> ';
                                         var a = '<a class="btn btn-primary btn-sm ' + s_add_h + '" href="#" title="增加下級"  mce_href="#" onclick="add(\''
-                                            + row.id
+                                            + row.parentId
                                             + '\')"><i class="fa fa-plus"></i></a> ';
 										var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
 												+ row.id
@@ -115,14 +115,14 @@ function load() {
 function reLoad() {
 	$('#exampleTable').bootstrapTreeTable('refresh');
 }
-function add() {
+function add(parentId) {
 	layer.open({
 		type : 2,
 		title : '增加',
 		maxmin : true,
 		shadeClose : false, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
-		content : prefix + '/add' // iframe的url
+		content : prefix + '/add/' + parentId // iframe的url
 	});
 }
 function edit(id) {
