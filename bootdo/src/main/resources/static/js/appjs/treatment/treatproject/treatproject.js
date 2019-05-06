@@ -64,9 +64,9 @@ function load() {
 								// {
 								// 	checkbox : true
 								// },
-								// 								{
+								// {
 								// 	field : 'id',
-								// 	title : 'id - 治则(专属)表ID'
+								// 	title : '序号'
 								// },
                             	{
                                 	field : 'title',
@@ -74,29 +74,29 @@ function load() {
                             	},
 								{
 									field : 'parentId', 
-									title : '父亲节点编码'
+									title : '父节点编码'
 								},
 								{
 									field : 'titleUnit', 
 									title : '名称代码'
 								},
-								// 								{
+								// {
 								// 	field : 'orderNum',
 								// 	title : '排序值，用于内部排序'
 								// },
-																{
+								{
 									field : 'createTime', 
 									title : '创建时间' 
 								},
-																{
+								{
 									field : 'createUser', 
 									title : '创建人'
 								},
-																{
+								{
 									field : 'remark', 
 									title : '备注' 
 								},
-																{
+								{
 									title : '操作',
 									field : 'id',
 									align : 'center',

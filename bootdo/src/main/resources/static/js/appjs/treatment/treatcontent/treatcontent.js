@@ -44,38 +44,38 @@ function load() {
 						// sortOrder.
 						// 返回false将会终止请求
 						columns : [
-								{
-									checkbox : true
-								},
-								// 								{
-								// 	field : 'id',
-								// 	title : 'id - 治法部分的注释部分'
+								// {
+								// 	checkbox : true
 								// },
-																{
+								{
+									field : 'id',
+									title : '序号'
+								},
+								{
 									field : 'parentId', 
 									title : '父亲节点编码'
 								},
-																{
+								{
 									field : 'content', 
 									title : '注释'
 								},
-								// 								{
+								// {
 								// 	field : 'orderNum',
-								// 	title : '排序值，用于内部排序'
+								// 	title : '排序值'
 								// },
-																{
+								{
 									field : 'createTime', 
 									title : '创建时间' 
 								},
-																{
+								{
 									field : 'createUser', 
 									title : '创建人'
 								},
-																{
+								{
 									field : 'remark', 
 									title : '备注' 
 								},
-																{
+								{
 									title : '操作',
 									field : 'id',
 									align : 'center',

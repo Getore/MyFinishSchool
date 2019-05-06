@@ -55,7 +55,7 @@ function load() {
 								// },
 								{
 									field : 'parentId', 
-									title : '父亲节点编码'
+									title : '父节点编码'
 								},
 								{
 									field : 'applicableSymptom', 
@@ -69,10 +69,10 @@ function load() {
 									field : 'synonymWord', 
 									title : '同义词' 
 								},
-								{
-									field : 'orderNum', 
-									title : '排序值'
-								},
+								// {
+								// 	field : 'orderNum',
+								// 	title : '排序值'
+								// },
 								{
 									field : 'createTime', 
 									title : '创建时间' 
