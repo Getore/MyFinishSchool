@@ -9,7 +9,7 @@ function load() {
 			.bootstrapTreeTable(
 					{
 
-                        id : 'titleUnit',
+                        id : 'id',
                         code : 'titleUnit',
                         parentCode : 'parentId',
 
@@ -100,7 +100,7 @@ function load() {
 									title : '操作',
 									field : 'id',
 									align : 'center',
-									formatter : function(value, row, index) {
+									formatter : function(row, index) {
 										var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
 												+ row.id
 												+ '\')"><i class="fa fa-edit"></i></a> ';

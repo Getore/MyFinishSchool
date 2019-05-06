@@ -8,10 +8,7 @@
 	</select>
 
 	<select id="getPId" resultType="com.bootdo.treatment.domain.TreatprojectDO">
-		select `id`,`parent_id`,`title`,`title_unit`,`order_num`,`create_time`,`create_user`,`remark` from treatproject
-		<where>
-			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
-		</where>
+		select `id`,`parent_id`,`title`,`title_unit`,`order_num`,`create_time`,`create_user`,`remark` from treatproject where parent_id = #{parentId}
 	</select>
 
 	<select id="list" resultType="com.bootdo.treatment.domain.TreatprojectDO">
