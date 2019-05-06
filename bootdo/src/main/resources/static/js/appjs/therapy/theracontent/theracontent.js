@@ -34,7 +34,10 @@ function load() {
 								limit: params.limit,
 								offset:params.offset,
 
-                                applicableSymptom: $('#applicableSymptom').val()
+                                parentId : $('#parentId').val(),
+                                applicableSymptom: $('#applicableSymptom').val(),
+                                specificTreatment : $('#specificTreatment').val(),
+                                synonymWord : $('#synonymWord').val()
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};

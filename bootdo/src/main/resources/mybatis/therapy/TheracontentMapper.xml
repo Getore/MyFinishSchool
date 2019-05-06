@@ -13,8 +13,8 @@
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
 		  		  <if test="applicableSymptom != null and applicableSymptom != ''"> and applicable_symptom like CONCAT("%", #{applicableSymptom}, "%")</if>
-		  		  <if test="specificTreatment != null and specificTreatment != ''"> and specific_treatment = #{specificTreatment} </if>
-		  		  <if test="synonymWord != null and synonymWord != ''"> and synonym_word = #{synonymWord} </if>
+		  		  <if test="specificTreatment != null and specificTreatment != ''"> and specific_treatment like CONCAT("%", #{specificTreatment}, "%")</if>
+		  		  <if test="synonymWord != null and synonymWord != ''"> and synonym_word like CONCAT("%", #{synonymWord}, "%")</if>
 		  		  <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
