@@ -44,42 +44,42 @@ function load() {
 						// sortOrder.
 						// 返回false将会终止请求
 						columns : [
+								// {
+								// 	checkbox : true
+								// },
+								// 								{
+								// 	field : 'id',
+								// 	title : 'id'
+								// },
+                            	{
+                                	field : 'nametpd',
+                                	title : '小法名称'
+                            	},
 								{
-									checkbox : true
-								},
-																{
-									field : 'id', 
-									title : 'id' 
-								},
-																{
 									field : 'parentId', 
 									title : '治法编号'
 								},
-																{
-									field : 'nametpd', 
-									title : '小法名称' 
-								},
-																{
+								{
 									field : 'nametpdUnit', 
-									title : '小法名称 代码' 
+									title : '小法名称编码'
 								},
-																{
+								{
 									field : 'orderNum', 
 									title : '排序值' 
 								},
-																{
+								{
 									field : 'createTime', 
 									title : '创建时间' 
 								},
-																{
+								{
 									field : 'createUser', 
 									title : '创建人编号' 
 								},
-																{
+								{
 									field : 'remark', 
 									title : '备注' 
 								},
-																{
+								{
 									title : '操作',
 									field : 'id',
 									align : 'center',
