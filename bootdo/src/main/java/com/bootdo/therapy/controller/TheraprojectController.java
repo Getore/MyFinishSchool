@@ -48,7 +48,7 @@ public class TheraprojectController {
 	    return "therapy/theraproject/theraproject";
 	}
 
-	@ApiOperation(value="获取治则名称列表", notes="")	// treeTable
+	@ApiOperation(value="获取治法名称列表", notes="")	// treeTable
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("therapy:theraproject:theraproject")
