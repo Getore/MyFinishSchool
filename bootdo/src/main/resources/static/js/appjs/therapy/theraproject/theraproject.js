@@ -15,7 +15,10 @@ function load() {
 						method : 'get', // 服务器数据的请求方式 get or post
 						url : prefix + "/list", // 服务器数据的加载地址
 
-                        ajaxParams : {}, // 请求数据的ajax的data属性
+                        ajaxParams : {
+                            parentId : $('#parentId').val(),
+                            nametpUnit : $('#nametpUnit').val()
+						}, // 请求数据的ajax的data属性
                         expandColumn : '0', // 在哪一列上面显示展开按钮
                         striped : true, // 是否各行渐变色
                         bordered : true, // 是否显示边框
@@ -113,7 +116,8 @@ function load() {
 					});
 }
 function reLoad() {
-	$('#exampleTable').bootstrapTreeTable('refresh');
+	// $('#exampleTable').bootstrapTreeTable('refresh');
+    load();
 }
 function add(id) {
 	layer.open({

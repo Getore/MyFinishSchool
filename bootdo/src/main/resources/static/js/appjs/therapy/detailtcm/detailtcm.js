@@ -32,7 +32,9 @@ function load() {
 							return {
 								//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 								limit: params.limit,
-								offset:params.offset
+								offset:params.offset,
+
+                                parentId : $('#parentId').val()
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};
@@ -57,7 +59,7 @@ function load() {
                             	},
 								{
 									field : 'parentId', 
-									title : '治法编号'
+									title : '父节点编号'
 								},
 								{
 									field : 'nametpdUnit', 
@@ -100,6 +102,7 @@ function load() {
 }
 function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
+	// load();
 }
 function add() {
 	layer.open({

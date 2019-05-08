@@ -11,7 +11,7 @@
 		select `id`,`parent_id`,`nametpd`,`nametpd_unit`,`order_num`,`create_time`,`create_user`,`remark` from theraproject_detailtcm
         <where>  
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+		  		  <if test="parentId != null and parentId != ''"> and parent_id like CONCAT("%", #{parentId}, "%") </if>
 		  		  <if test="nametpd != null and nametpd != ''"> and nametpd = #{nametpd} </if>
 		  		  <if test="nametpdUnit != null and nametpdUnit != ''"> and nametpd_unit = #{nametpdUnit} </if>
 		  		  <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>

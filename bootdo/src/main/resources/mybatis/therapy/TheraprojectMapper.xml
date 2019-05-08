@@ -19,9 +19,9 @@
 		select `id`,`parent_id`,`nametp`,`nametp_unit`,`order_num`,`create_time`,`create_user`,`remark` from theraproject
         <where>  
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+		  		  <if test="parentId != null and parentId != ''"> and parent_id like CONCAT("%", #{parentId}, "%") </if>
 		  		  <if test="nametp != null and nametp != ''"> and nametp = #{nametp} </if>
-		  		  <if test="nametpUnit != null and nametpUnit != ''"> and nametp_unit = #{nametpUnit} </if>
+		  		  <if test="nametpUnit != null and nametpUnit != ''"> and nametp_unit like CONCAT("%", #{nametpUnit}, "%") </if>
 		  		  <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
