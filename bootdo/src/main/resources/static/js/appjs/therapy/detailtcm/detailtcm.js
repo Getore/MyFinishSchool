@@ -34,7 +34,8 @@ function load() {
 								limit: params.limit,
 								offset:params.offset,
 
-                                parentId : $('#parentId').val()
+                                parentId : $('#parentId').val(),
+                                nametpdUnit : $('#nametpdUnit').val()
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};

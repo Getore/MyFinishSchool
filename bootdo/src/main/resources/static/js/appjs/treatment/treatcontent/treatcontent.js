@@ -47,10 +47,10 @@ function load() {
 								// {
 								// 	checkbox : true
 								// },
-								{
-									field : 'id',
-									title : '序号'
-								},
+								// {
+								// 	field : 'id',
+								// 	title : '序号'
+								// },
 								{
 									field : 'parentId', 
 									title : '父亲节点编码'
