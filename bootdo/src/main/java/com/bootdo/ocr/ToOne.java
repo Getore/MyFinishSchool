@@ -18,12 +18,13 @@ public class ToOne {
             String num = Integer.toString(i);
             String FileName = "F:\\BigStudyGraduation\\MyFinishSchool\\bootdo\\src\\main\\java\\com\\bootdo\\ocr\\txt\\" + num + ".txt";
 //            String FileName="C:\\Users\\Administrator\\Desktop\\基础笔记\\day"+num+"笔记.md";
+
             File file=new File(FileName);
             if(file.exists()) {
-                System.out.println(FileName);
+                System.out.println(FileName);           // 在控制台打印正在处理的文本名称
                 BufferedReader br = new BufferedReader(new FileReader(file));
-                String line;
-                while((line=br.readLine())!=null) {
+                String line;                            // line用来临时存储字符串变量
+                while((line = br.readLine())!=null) {   // 如果line中有字符串，那么进行写入合并文本中
                     bw.write(line);
                     bw.newLine();
                 }
