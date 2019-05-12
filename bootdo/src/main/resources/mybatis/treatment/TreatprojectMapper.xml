@@ -17,7 +17,7 @@
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
 		  		  <if test="title != null and title != ''"> and title like CONCAT("%", #{title}, "%") </if>
-		  		  <if test="titleUnit != null and titleUnit != ''"> and title_unit = #{titleUnit} </if>
+		  		  <if test="titleUnit != null and titleUnit != ''"> and title_unit like CONCAT("%", #{titleUnit}, "%") </if>
 		  		  <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
@@ -38,16 +38,16 @@
 	
  	<select id="count" resultType="int">
 		select count(*) from treatproject
-		 <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
-		  		  <if test="title != null and title != ''"> and title = #{title} </if>
-		  		  <if test="titleUnit != null and titleUnit != ''"> and title_unit = #{titleUnit} </if>
-		  		  <if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
-		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
-		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
-		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
-		  		</where>
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
+			<if test="title != null and title != ''"> and title like CONCAT("%", #{title}, "%") </if>
+			<if test="titleUnit != null and titleUnit != ''"> and title_unit like CONCAT("%", #{titleUnit}, "%") </if>
+			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
+			<if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+			<if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+			<if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		</where>
 	</select>
 	 
 	<insert id="save" parameterType="com.bootdo.treatment.domain.TreatprojectDO" useGeneratedKeys="true" keyProperty="id">
