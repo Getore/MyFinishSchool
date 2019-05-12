@@ -3,6 +3,7 @@ package com.bootdo.treatment.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.bootdo.treatment.domain.TreatmentDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -47,12 +48,11 @@ public class TreatcontentController {
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
         Query query = new Query(params);
-		List<TreatcontentDO> treatcontentList = treatcontentService.list(query);
-		int total = treatcontentService.count(query);
+		List<TreatmentDO> treatcontentList = treatcontentService.treatmentList(query);
+		int total = treatcontentService.treatmentCount(query);
 		PageUtils pageUtils = new PageUtils(treatcontentList, total);
 		return pageUtils;
 	}
-	
 	@GetMapping("/add")
 	@RequiresPermissions("treatment:treatcontent:add")
 	String add(){

@@ -1,5 +1,6 @@
 package com.bootdo.treatment.service.impl;
 
+import com.bootdo.treatment.domain.TreatmentDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,12 +27,22 @@ public class TreatcontentServiceImpl implements TreatcontentService {
 	public List<TreatcontentDO> list(Map<String, Object> map){
 		return treatcontentDao.list(map);
 	}
-	
+
+	@Override
+	public List<TreatmentDO> treatmentList(Map<String, Object> map) {
+		return treatcontentDao.treatmentList(map);
+	}
+
 	@Override
 	public int count(Map<String, Object> map){
 		return treatcontentDao.count(map);
 	}
-	
+
+	@Override
+	public int treatmentCount(Map<String, Object> map) {
+		return treatcontentDao.treatmentCount(map);
+	}
+
 	@Override
 	public int save(TreatcontentDO treatcontent){
 		return treatcontentDao.save(treatcontent);

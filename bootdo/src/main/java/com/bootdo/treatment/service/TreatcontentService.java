@@ -1,6 +1,7 @@
 package com.bootdo.treatment.service;
 
 import com.bootdo.treatment.domain.TreatcontentDO;
+import com.bootdo.treatment.domain.TreatmentDO;
 
 import java.util.List;
 import java.util.Map;
@@ -17,9 +18,13 @@ public interface TreatcontentService {
 	TreatcontentDO get(Integer id);
 	
 	List<TreatcontentDO> list(Map<String, Object> map);
+
+	List<TreatmentDO> treatmentList(Map<String, Object> map);
 	
 	int count(Map<String, Object> map);
-	
+
+	int treatmentCount(Map<String, Object> map);
+
 	int save(TreatcontentDO treatcontent);
 	
 	int update(TreatcontentDO treatcontent);

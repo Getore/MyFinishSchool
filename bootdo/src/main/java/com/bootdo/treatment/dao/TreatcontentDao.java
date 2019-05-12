@@ -5,6 +5,7 @@ import com.bootdo.treatment.domain.TreatcontentDO;
 import java.util.List;
 import java.util.Map;
 
+import com.bootdo.treatment.domain.TreatmentDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -19,6 +20,10 @@ public interface TreatcontentDao {
 	TreatcontentDO get(Integer id);
 	
 	List<TreatcontentDO> list(Map<String, Object> map);
+
+	List<TreatmentDO> treatmentList(Map<String, Object> map);
+
+	int treatmentCount(Map<String, Object> map);
 	
 	int count(Map<String, Object> map);
 	

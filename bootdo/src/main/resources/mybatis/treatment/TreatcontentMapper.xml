@@ -9,7 +9,7 @@
 
 	<select id="list" resultType="com.bootdo.treatment.domain.TreatcontentDO">
 		select `id`,`parent_id`,`content`,`order_num`,`create_time`,`create_user`,`remark` from treatcontent
-        <where>  
+        <where>
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
 		  		  <if test="content != null and content != ''"> and content = #{content} </if>
@@ -30,8 +30,33 @@
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-	
- 	<select id="count" resultType="int">
+
+	<select id="treatmentList" resultType="com.bootdo.treatment.domain.TreatmentDO">
+		SELECT tp.id, tp.parent_id, tp.title_unit, tp.title, tc.content, tp.order_num
+		from treatproject tp
+		LEFT JOIN treatcontent tc on tc.parent_id = tp.title_unit
+		<where>
+			<if test="id != null and id != ''"> and tp.id = #{id} </if>
+			<if test="parentId != null and parentId != ''"> and tp.parent_id = #{parentId} </if>
+			<if test="titleUnit != null and titleUnit != ''"> and tp.title_unit = #{titleUnit} </if>
+			<if test="title != null and title != ''"> and tp.title = #{title} </if>
+			<if test="content != null and content != ''"> and tc.content = #{content} </if>
+			<if test="orderNum != null and orderNum != ''"> and tp.order_num = #{orderNum} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by tp.id asc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="count" resultType="int">
 		select count(*) from treatcontent
 		 <where>  
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
@@ -43,7 +68,21 @@
 		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
 		  		</where>
 	</select>
-	 
+
+	<select id="treatmentCount" resultType="int">
+		SELECT count(*)
+		from treatproject tp
+		LEFT JOIN treatcontent tc on tc.parent_id = tp.title_unit
+		<where>
+			<if test="id != null and id != ''"> and tp.id = #{id} </if>
+			<if test="parentId != null and parentId != ''"> and tp.parent_id = #{parentId} </if>
+			<if test="titleUnit != null and titleUnit != ''"> and tp.title_unit = #{titleUnit} </if>
+			<if test="title != null and title != ''"> and tp.title = #{title} </if>
+			<if test="content != null and content != ''"> and tc.content = #{content} </if>
+			<if test="orderNum != null and orderNum != ''"> and tp.order_num = #{orderNum} </if>
+		</where>
+	</select>
+
 	<insert id="save" parameterType="com.bootdo.treatment.domain.TreatcontentDO" useGeneratedKeys="true" keyProperty="id">
 		insert into treatcontent
 		(
