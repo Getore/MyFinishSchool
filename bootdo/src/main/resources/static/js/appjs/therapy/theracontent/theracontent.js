@@ -34,6 +34,12 @@ function load() {
 								limit: params.limit,
 								offset:params.offset,
 
+                                parentId : $('#parentId').val(),
+                                nametp : $('#nametp').val(),
+                                nametpUnit : $('#nametpUnit').val(),
+                                applicableSymptom : $('#applicableSymptom').val(),
+                                specificTreatment : $('#specificTreatment').val(),
+                                synonymWord : $('#synonymWord').val()
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};
@@ -78,7 +84,7 @@ function load() {
 								},
 								{
 									field : 'synonymWord', 
-									title : '同义词' 
+									title : '同义'
 								},
 								// {
 								// 	title : '操作',
