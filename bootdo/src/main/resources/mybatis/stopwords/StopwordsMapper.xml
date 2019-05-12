@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.stopwords.dao.StopwordsDao">
+
+	<select id="get" resultType="com.bootdo.stopwords.domain.StopwordsDO">
+		select `id`,`namest`,`typest`,`describest`,`create_time`,`create_user`,`remark` from stopwords where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.stopwords.domain.StopwordsDO">
+		select `id`,`namest`,`typest`,`describest`,`create_time`,`create_user`,`remark` from stopwords
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="namest != null and namest != ''"> and namest = #{namest} </if>
+		  		  <if test="typest != null and typest != ''"> and typest = #{typest} </if>
+		  		  <if test="describest != null and describest != ''"> and describest = #{describest} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from stopwords
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="namest != null and namest != ''"> and namest = #{namest} </if>
+		  		  <if test="typest != null and typest != ''"> and typest = #{typest} </if>
+		  		  <if test="describest != null and describest != ''"> and describest = #{describest} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.stopwords.domain.StopwordsDO" useGeneratedKeys="true" keyProperty="id">
+		insert into stopwords
+		(
+			`namest`, 
+			`typest`, 
+			`describest`, 
+			`create_time`, 
+			`create_user`, 
+			`remark`
+		)
+		values
+		(
+			#{namest}, 
+			#{typest}, 
+			#{describest}, 
+			#{createTime}, 
+			#{createUser}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.stopwords.domain.StopwordsDO">
+		update stopwords 
+		<set>
+			<if test="namest != null">`namest` = #{namest}, </if>
+			<if test="typest != null">`typest` = #{typest}, </if>
+			<if test="describest != null">`describest` = #{describest}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createUser != null">`create_user` = #{createUser}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from stopwords where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from stopwords where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

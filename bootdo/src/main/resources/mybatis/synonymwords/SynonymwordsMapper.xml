@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.synonymwords.dao.SynonymwordsDao">
+
+	<select id="get" resultType="com.bootdo.synonymwords.domain.SynonymwordsDO">
+		select `id`,`namesy`,`typesy`,`describesy`,`synonymsy`,`create_time`,`create_user`,`remark` from synonymwords where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.synonymwords.domain.SynonymwordsDO">
+		select `id`,`namesy`,`typesy`,`describesy`,`synonymsy`,`create_time`,`create_user`,`remark` from synonymwords
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="namesy != null and namesy != ''"> and namesy = #{namesy} </if>
+		  		  <if test="typesy != null and typesy != ''"> and typesy = #{typesy} </if>
+		  		  <if test="describesy != null and describesy != ''"> and describesy = #{describesy} </if>
+		  		  <if test="synonymsy != null and synonymsy != ''"> and synonymsy = #{synonymsy} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from synonymwords
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="namesy != null and namesy != ''"> and namesy = #{namesy} </if>
+		  		  <if test="typesy != null and typesy != ''"> and typesy = #{typesy} </if>
+		  		  <if test="describesy != null and describesy != ''"> and describesy = #{describesy} </if>
+		  		  <if test="synonymsy != null and synonymsy != ''"> and synonymsy = #{synonymsy} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.synonymwords.domain.SynonymwordsDO" useGeneratedKeys="true" keyProperty="id">
+		insert into synonymwords
+		(
+			`namesy`, 
+			`typesy`, 
+			`describesy`, 
+			`synonymsy`, 
+			`create_time`, 
+			`create_user`, 
+			`remark`
+		)
+		values
+		(
+			#{namesy}, 
+			#{typesy}, 
+			#{describesy}, 
+			#{synonymsy}, 
+			#{createTime}, 
+			#{createUser}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.synonymwords.domain.SynonymwordsDO">
+		update synonymwords 
+		<set>
+			<if test="namesy != null">`namesy` = #{namesy}, </if>
+			<if test="typesy != null">`typesy` = #{typesy}, </if>
+			<if test="describesy != null">`describesy` = #{describesy}, </if>
+			<if test="synonymsy != null">`synonymsy` = #{synonymsy}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createUser != null">`create_user` = #{createUser}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from synonymwords where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from synonymwords where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
