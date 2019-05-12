@@ -45,9 +45,9 @@
 		) aa
 		LEFT JOIN theracontent tc ON tc.parent_id = aa.nametp_unit
 		<where>
-			<if test="parentId != null and parentId != ''"> and aa.parent_id like CONCAT("%", #{parentId}, "%") </if>
+			<if test="parentId != null and parentId != ''"> and aa.parent_id = #{parentId} </if>
 			<if test="nametp != null and nametp != ''"> and aa.nametp like CONCAT("%", #{nametp}, "%") </if>
-			<if test="nametpUnit != null and nametpUnit != ''"> and aa.nametp_unit like CONCAT("%", #{nametpUnit}, "%")</if>
+			<if test="nametpUnit != null and nametpUnit != ''"> and aa.nametp_unit = #{nametpUnit}</if>
 			<if test="orderNum != null and orderNum != ''"> and aa.order_num = #{orderNum} </if>
 			<if test="applicableSymptom != null and applicableSymptom != ''"> and tc.applicable_symptom like CONCAT("%", #{applicableSymptom}, "%")</if>
 			<if test="specificTreatment != null and specificTreatment != ''"> and tc.specific_treatment like CONCAT("%", #{specificTreatment}, "%")</if>
@@ -78,7 +78,7 @@
 		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
 		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
 		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
-		  		</where>
+		 </where>
 	</select>
 
 	<select id="therapyCount" resultType="int">
@@ -93,9 +93,9 @@
 		) aa
 		LEFT JOIN theracontent tc ON tc.parent_id = aa.nametp_unit
 		<where>
-			<if test="parentId != null and parentId != ''"> and aa.parent_id like CONCAT("%", #{parentId}, "%") </if>
+			<if test="parentId != null and parentId != ''"> and aa.parent_id = #{parentId} </if>
 			<if test="nametp != null and nametp != ''"> and aa.nametp like CONCAT("%", #{nametp}, "%") </if>
-			<if test="nametpUnit != null and nametpUnit != ''"> and aa.nametp_unit like CONCAT("%", #{nametpUnit}, "%")</if>
+			<if test="nametpUnit != null and nametpUnit != ''"> and aa.nametp_unit = #{nametpUnit}</if>
 			<if test="orderNum != null and orderNum != ''"> and aa.order_num = #{orderNum} </if>
 			<if test="applicableSymptom != null and applicableSymptom != ''"> and tc.applicable_symptom like CONCAT("%", #{applicableSymptom}, "%")</if>
 			<if test="specificTreatment != null and specificTreatment != ''"> and tc.specific_treatment like CONCAT("%", #{specificTreatment}, "%")</if>
