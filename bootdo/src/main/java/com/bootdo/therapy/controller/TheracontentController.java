@@ -3,6 +3,7 @@ package com.bootdo.therapy.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.bootdo.therapy.domain.TherapyDO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -47,8 +48,8 @@ public class TheracontentController {
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
         Query query = new Query(params);
-		List<TheracontentDO> theracontentList = theracontentService.list(query);
-		int total = theracontentService.count(query);
+		List<TherapyDO> theracontentList = theracontentService.therapyList(query);
+		int total = theracontentService.therapyCount(query);
 		PageUtils pageUtils = new PageUtils(theracontentList, total);
 		return pageUtils;
 	}

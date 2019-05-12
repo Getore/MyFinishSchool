@@ -1,6 +1,7 @@
 package com.bootdo.therapy.service;
 
 import com.bootdo.therapy.domain.TheracontentDO;
+import com.bootdo.therapy.domain.TherapyDO;
 
 import java.util.List;
 import java.util.Map;
@@ -17,8 +18,12 @@ public interface TheracontentService {
 	TheracontentDO get(Integer id);
 	
 	List<TheracontentDO> list(Map<String, Object> map);
+
+	List<TherapyDO> therapyList(Map<String, Object> map);
 	
 	int count(Map<String, Object> map);
+
+	int therapyCount(Map<String, Object> map);
 	
 	int save(TheracontentDO theracontent);
 	

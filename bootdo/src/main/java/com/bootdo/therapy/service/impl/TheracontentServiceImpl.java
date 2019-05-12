@@ -1,5 +1,6 @@
 package com.bootdo.therapy.service.impl;
 
+import com.bootdo.therapy.domain.TherapyDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,12 +27,22 @@ public class TheracontentServiceImpl implements TheracontentService {
 	public List<TheracontentDO> list(Map<String, Object> map){
 		return theracontentDao.list(map);
 	}
-	
+
+	@Override
+	public List<TherapyDO> therapyList(Map<String, Object> map) {
+		return theracontentDao.therapyList(map);
+	}
+
 	@Override
 	public int count(Map<String, Object> map){
 		return theracontentDao.count(map);
 	}
-	
+
+	@Override
+	public int therapyCount(Map<String, Object> map) {
+		return theracontentDao.therapyCount(map);
+	}
+
 	@Override
 	public int save(TheracontentDO theracontent){
 		return theracontentDao.save(theracontent);

@@ -32,8 +32,41 @@
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-	
- 	<select id="count" resultType="int">
+
+	<select id="therapyList" resultType="com.bootdo.therapy.domain.TherapyDO">
+		SELECT aa.parent_id, aa.nametp, aa.nametp_unit, aa.order_num, tc.applicable_symptom, tc.specific_treatment, tc.synonym_word
+		from
+		(
+		SELECT *
+		FROM theraproject tp
+		UNION ALL
+		SELECT *
+		FROM theraproject_detailtcm td
+		) aa
+		LEFT JOIN theracontent tc ON tc.parent_id = aa.nametp_unit
+		<where>
+			<if test="parentId != null and parentId != ''"> and aa.parent_id like CONCAT("%", #{parentId}, "%") </if>
+			<if test="nametp != null and nametp != ''"> and aa.nametp like CONCAT("%", #{nametp}, "%") </if>
+			<if test="nametpUnit != null and nametpUnit != ''"> and aa.nametp_unit like CONCAT("%", #{nametpUnit}, "%")</if>
+			<if test="orderNum != null and orderNum != ''"> and aa.order_num = #{orderNum} </if>
+			<if test="applicableSymptom != null and applicableSymptom != ''"> and tc.applicable_symptom like CONCAT("%", #{applicableSymptom}, "%")</if>
+			<if test="specificTreatment != null and specificTreatment != ''"> and tc.specific_treatment like CONCAT("%", #{specificTreatment}, "%")</if>
+			<if test="synonymWord != null and synonymWord != ''"> and tc.synonym_word like CONCAT("%", #{synonymWord}, "%")</if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by aa.order_num asc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="count" resultType="int">
 		select count(*) from theracontent
 		 <where>  
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
@@ -46,6 +79,28 @@
 		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
 		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
 		  		</where>
+	</select>
+
+	<select id="therapyCount" resultType="int">
+		select count(*)
+		from
+		(
+		SELECT *
+		FROM theraproject tp
+		UNION ALL
+		SELECT *
+		FROM theraproject_detailtcm td
+		) aa
+		LEFT JOIN theracontent tc ON tc.parent_id = aa.nametp_unit
+		<where>
+			<if test="parentId != null and parentId != ''"> and aa.parent_id like CONCAT("%", #{parentId}, "%") </if>
+			<if test="nametp != null and nametp != ''"> and aa.nametp like CONCAT("%", #{nametp}, "%") </if>
+			<if test="nametpUnit != null and nametpUnit != ''"> and aa.nametp_unit like CONCAT("%", #{nametpUnit}, "%")</if>
+			<if test="orderNum != null and orderNum != ''"> and aa.order_num = #{orderNum} </if>
+			<if test="applicableSymptom != null and applicableSymptom != ''"> and tc.applicable_symptom like CONCAT("%", #{applicableSymptom}, "%")</if>
+			<if test="specificTreatment != null and specificTreatment != ''"> and tc.specific_treatment like CONCAT("%", #{specificTreatment}, "%")</if>
+			<if test="synonymWord != null and synonymWord != ''"> and tc.synonym_word like CONCAT("%", #{synonymWord}, "%")</if>
+		</where>
 	</select>
 	 
 	<insert id="save" parameterType="com.bootdo.therapy.domain.TheracontentDO" useGeneratedKeys="true" keyProperty="id">

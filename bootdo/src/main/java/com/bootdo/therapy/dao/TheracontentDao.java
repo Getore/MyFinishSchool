@@ -5,6 +5,7 @@ import com.bootdo.therapy.domain.TheracontentDO;
 import java.util.List;
 import java.util.Map;
 
+import com.bootdo.therapy.domain.TherapyDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -19,8 +20,12 @@ public interface TheracontentDao {
 	TheracontentDO get(Integer id);
 	
 	List<TheracontentDO> list(Map<String, Object> map);
+
+	List<TherapyDO> therapyList(Map<String, Object> map);
 	
 	int count(Map<String, Object> map);
+
+	int therapyCount(Map<String, Object> map);
 	
 	int save(TheracontentDO theracontent);
 	
