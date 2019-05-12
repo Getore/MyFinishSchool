@@ -52,18 +52,16 @@ public class TheraprojectController {
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("therapy:theraproject:theraproject")
-	public List<TheraprojectDO> list(@RequestParam(value = "nametpUnit") String nametpUnit){
-		Map<String, Object> query = new HashMap<>(16);
-		List<TheraprojectDO> theraprojectDOS;
+	public List<TheraprojectDO> list(@RequestParam(value = "nametp") String nametp,
+									 @RequestParam(value = "parentId") String parentId,
+									 @RequestParam(value = "nametpUnit") String nametpUnit){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("nametp", nametp);
+		map.put("parentId", parentId);
+		map.put("nametpUnit", nametpUnit);
 
-		if (nametpUnit != null && nametpUnit != ""){
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("nametpUnit", nametpUnit);
+		List<TheraprojectDO> theraprojectDOS = theraprojectService.list(map);
 
-			theraprojectDOS = theraprojectService.list(map);
-		} else {
-			theraprojectDOS = theraprojectService.list(query);
-		}
 		return theraprojectDOS;
 	}
 	

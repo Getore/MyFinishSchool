@@ -62,8 +62,6 @@ public class TreatprojectController {
 		map.put("titleUnit", titleUnit);
 
 		List<TreatprojectDO> treatprojectList = treatprojectService.list(map);
-
-
 		return treatprojectList;
 	}
 	

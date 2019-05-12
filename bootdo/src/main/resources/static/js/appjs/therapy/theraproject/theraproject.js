@@ -16,6 +16,7 @@ function load() {
 						url : prefix + "/list", // 服务器数据的加载地址
 
                         ajaxParams : {
+                            nametp : $('#nametp').val(),
                             parentId : $('#parentId').val(),
                             nametpUnit : $('#nametpUnit').val()
 						}, // 请求数据的ajax的data属性
@@ -75,44 +76,45 @@ function load() {
                             	},
 								{
 									field : 'nametpUnit', 
-									title : '名称代码'
+									title : '此节点编码'
 								},
 								// {
 								// 	field : 'orderNum',
 								// 	title : '排序值'
 								// },
-								{
-									field : 'createTime', 
-									title : '创建时间' 
-								},
-								{
-									field : 'createUser', 
-									title : '创建人编号' 
-								},
-								{
-									field : 'remark', 
-									title : '备注' 
-								},
-								{
-									title : '操作',
-									field : 'id',
-									align : 'center',
-									formatter : function(row, index) {
-										var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
-												+ row.id
-												+ '\')"><i class="fa fa-edit"></i></a> ';
-                                        var a = '<a class="btn btn-primary btn-sm ' + s_add_h + '" href="#" title="增加下級"  mce_href="#" onclick="add(\''
-                                            + row.id
-                                            + '\')"><i class="fa fa-plus"></i></a> ';
-										var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
-												+ row.id
-												+ '\')"><i class="fa fa-remove"></i></a> ';
-										var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-												+ row.id
-												+ '\')"><i class="fa fa-key"></i></a> ';
-										return e + a + d ;
-									}
-								} ]
+								// {
+								// 	field : 'createTime',
+								// 	title : '创建时间'
+								// },
+								// {
+								// 	field : 'createUser',
+								// 	title : '创建人编号'
+								// },
+								// {
+								// 	field : 'remark',
+								// 	title : '备注'
+								// },
+								// {
+								// 	title : '操作',
+								// 	field : 'id',
+								// 	align : 'center',
+								// 	formatter : function(row, index) {
+								// 		var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
+								// 				+ row.id
+								// 				+ '\')"><i class="fa fa-edit"></i></a> ';
+                                //         var a = '<a class="btn btn-primary btn-sm ' + s_add_h + '" href="#" title="增加下級"  mce_href="#" onclick="add(\''
+                                //             + row.id
+                                //             + '\')"><i class="fa fa-plus"></i></a> ';
+								// 		var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
+								// 				+ row.id
+								// 				+ '\')"><i class="fa fa-remove"></i></a> ';
+								// 		var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
+								// 				+ row.id
+								// 				+ '\')"><i class="fa fa-key"></i></a> ';
+								// 		return e + a + d ;
+								// 	}
+								// }
+								]
 					});
 }
 function reLoad() {
