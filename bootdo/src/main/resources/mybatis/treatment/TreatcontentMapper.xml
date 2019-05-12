@@ -38,8 +38,8 @@
 		<where>
 			<if test="id != null and id != ''"> and tp.id = #{id} </if>
 			<if test="parentId != null and parentId != ''"> and tp.parent_id = #{parentId} </if>
-			<if test="titleUnit != null and titleUnit != ''"> and tp.title_unit = #{titleUnit} </if>
-			<if test="title != null and title != ''"> and tp.title = #{title} </if>
+			<if test="titleUnit != null and titleUnit != ''"> and tp.title_unit like CONCAT("%", #{titleUnit}, "%") </if>
+			<if test="title != null and title != ''"> and tp.title like CONCAT("%", #{title}, "%")  </if>
 			<if test="content != null and content != ''"> and tc.content = #{content} </if>
 			<if test="orderNum != null and orderNum != ''"> and tp.order_num = #{orderNum} </if>
 		</where>
@@ -76,8 +76,8 @@
 		<where>
 			<if test="id != null and id != ''"> and tp.id = #{id} </if>
 			<if test="parentId != null and parentId != ''"> and tp.parent_id = #{parentId} </if>
-			<if test="titleUnit != null and titleUnit != ''"> and tp.title_unit = #{titleUnit} </if>
-			<if test="title != null and title != ''"> and tp.title = #{title} </if>
+			<if test="titleUnit != null and titleUnit != ''"> and tp.title_unit like CONCAT("%", #{titleUnit}, "%") </if>
+			<if test="title != null and title != ''"> and tp.title like CONCAT("%", #{title}, "%")  </if>
 			<if test="content != null and content != ''"> and tc.content = #{content} </if>
 			<if test="orderNum != null and orderNum != ''"> and tp.order_num = #{orderNum} </if>
 		</where>

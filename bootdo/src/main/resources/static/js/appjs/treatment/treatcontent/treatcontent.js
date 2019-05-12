@@ -32,7 +32,11 @@ function load() {
 							return {
 								//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 								limit: params.limit,
-								offset:params.offset
+								offset:params.offset,
+
+                                parentId : $('#parentId').val(),
+                                titleUnit : $('#titleUnit').val(),
+                                title : $('#title').val()
 					           // name:$('#searchName').val(),
 					           // username:$('#searchName').val()
 							};
@@ -47,30 +51,30 @@ function load() {
 								// {
 								// 	checkbox : true
 								// },
-								{
-									field : 'id',
-									title : '序号'
-								},
+								// {
+								// 	field : 'id',
+								// 	title : '序号'
+								// },
 								{
 									field : 'parentId', 
 									title : '父亲节点编码'
 								},
                             	{
-                            	    field : 'titleUnit',
-                            	    title : '此节点编码'
-                            	},
-                            	{
                             	    field : 'title',
                             	    title : '名称'
+                            	},
+                            	{
+                            	    field : 'titleUnit',
+                            	    title : '此节点编码'
                             	},
 								{
 									field : 'content', 
 									title : '内容'
 								},
-								{
-									field : 'orderNum',
-									title : '排序值'
-								},
+								// {
+								// 	field : 'orderNum',
+								// 	title : '排序值'
+								// },
 								// {
 								// 	field : 'remark',
 								// 	title : '备注'

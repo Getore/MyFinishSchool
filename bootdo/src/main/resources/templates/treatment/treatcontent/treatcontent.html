@@ -17,13 +17,39 @@
 								<i class="fa fa-trash" aria-hidden="true"></i>删除
 							</button>
 						</div>
-						<div class="columns pull-right">
-							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						<div>
+							<div>
+								<div class="f-w" style="display: flex">
+									<div class="f" style="flex-grow:1;margin-right: 25px;margin-left: 25px">
+										<label for="parentId" class="control-label" >父节点编码:</label>
+										<input type="text" class="form-control" id="parentId" name="parentId" placeholder="例如：DE05.01.902.01.."
+											   style="max-width: 65%;display: inline-block" />
+									</div>
+									<div class="f" style="flex-grow:1;margin-right: 25px">
+										<label for="titleUnit" class="control-label" >此节点编码:</label>
+										<input type="text" class="form-control" id="titleUnit" name="titleUnit" placeholder="例如：发汗、用味辛性凉方药.."
+											   style="max-width: 65%;display: inline-block" />
+									</div>
+									<div class="f" style="flex-grow:1;margin-right: 25px">
+										<label for="title" class="control-label" >名称:</label>
+										<input type="text" class="form-control" id="title" name="title" placeholder="例如：解表法、和解少阳.."
+											   style="max-width: 65%;display: inline-block" />
+									</div>
+								</div>
+							</div>
+							<div style="display: flex">
+								<div style="flex-grow: 4"></div>
+								<div class="columns pull-right" style="flex-grow: 1">
+									<button class="btn btn-success" onclick="reLoad()" style="width: 100%">查询</button>
+								</div>
+								<div style="flex-grow: 4"></div>
+							</div>
 						</div>
-						<div class="columns pull-right col-md-2 nopadding">
-							<input id="searchName" type="text" class="form-control"
-								placeholder="">
-						</div>
+
+						<!--<div class="columns pull-right col-md-2 nopadding">-->
+							<!--<input id="searchName" type="text" class="form-control"-->
+								<!--placeholder="">-->
+						<!--</div>-->
 					</div>
 					<table id="exampleTable" data-mobile-responsive="true">
 					</table>
