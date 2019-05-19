@@ -21,10 +21,11 @@ public class ToOne {
 
             File file=new File(FileName);
             if(file.exists()) {
-                System.out.println(FileName);           // 在控制台打印正在处理的文本名称
+                System.out.println(FileName);   // 在控制台打印正在处理的文本名称
                 BufferedReader br = new BufferedReader(new FileReader(file));
-                String line;                            // line用来临时存储字符串变量
-                while((line = br.readLine())!=null) {   // 如果line中有字符串，那么进行写入合并文本中
+                String line;    // line用来临时存储字符串变量
+                // 如果line中有字符串，那么进行写入合并文本中
+                while((line = br.readLine())!=null) {
                     bw.write(line);
                     bw.newLine();
                 }
