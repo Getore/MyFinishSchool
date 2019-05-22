@@ -70,10 +70,10 @@ function load() {
                             	    field : 'nametpUnit',
                             	    title : '此节点编码'
                             	},
-                            	{
-                            	    field : 'orderNum',
-                            	    title : '排序值'
-                            	},
+                            	// {
+                            	//     field : 'orderNum',
+                            	//     title : '排序值'
+                            	// },
 								{
 									field : 'applicableSymptom', 
 									title : '适用症候'
