@@ -33,11 +33,11 @@ public class JpgToTxt {
 
         for (int j=0; j< 95; j++){
             // 设置文件路径，根据 txtNum 变量值确定写入文本的文件名
-            String outputFile = "F:\\BigStudyGraduation\\MyFinishSchool\\bootdo\\src\\main\\java\\com\\bootdo\\ocr\\txt\\" + photoNum + ".txt";
+            String outputFile = "F:\\BigStudyGraduation\\MyFinishSchool\\bootdo\\src\\main\\java\\com\\bootdo\\ocr\\txt\\" + txtNum + ".txt";
             BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile));
 
             // 设置文件路径，根据 photoNum 变量值确定读取的文件名
-            String path = "F:\\BigStudyGraduation\\MyFinishSchool\\bootdo\\src\\main\\java\\com\\bootdo\\ocr\\photo\\" + txtNum + ".jpg";
+            String path = "F:\\BigStudyGraduation\\MyFinishSchool\\bootdo\\src\\main\\java\\com\\bootdo\\ocr\\photo\\" + photoNum + ".jpg";
             // 获取本张图片的 JSON 字符串 res
             JSONObject res = client.basicGeneral(path, new HashMap<String, String>());
 

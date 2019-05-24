@@ -6,6 +6,7 @@ import java.util.List;
  * @author shenli
  * @email
  * @createDate 2019/5/2 22:06
+ * @function 图片对象
  */
 public class Photo {
 

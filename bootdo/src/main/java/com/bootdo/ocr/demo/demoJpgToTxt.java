@@ -14,6 +14,7 @@ import java.util.HashMap;
  * @author shenli - XD02551
  * @email
  * @createDate 2019/5/24 17:27
+ * @function 用于演示 OCR 识别图片，有后台打印，也有文件输出
  */
 public class demoJpgToTxt{
     // 配置APPID / AK / SK
